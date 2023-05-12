@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>Register</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
         <h3>Register yourself!</h3>  
-        <form action="/users/register" method="POST">
+        <form action="/users/register" method="POST" enctype="multipart/form-data">
+            <label>First Name:</label>
+            <input type="text" name="firstname"><br><br>
+            <label>Last Name:</label>
+            <input type="text" name="lastname"><br><br>
             <label>User Name:</label>
-            <input type="text" name="name"><br><br>
-            <label>Email:</label>
-            <input type="email" name="email"><br><br>
-            <label>Password:</label>
-            <input type="password" name="password"><br><br>
+            <input type="text" name="username"><br><br>
+            <label>Avatar:</label>
+            <input type="file" name="avatar"><br><br>
             <input type="submit" value="Register">
         </form>
     </body>

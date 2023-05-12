@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>Users</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
         <h3>Registered Users</h3>  
+        <div>
         <% users.forEach(user => { %>
-            <span>Name: <%= user.name %></span><br>
-            <span>Email: <%= user.email %></span><br>
+            <span>First Name: <%= user.firstName %></span><br>
+            <span>Last Name: <%= user.lastName %></span><br>
+            <span>User Name: <%= user.userName %></span><br>
+            <span>File Path: <%= user.avatar %></span><br>
         <% }) %>
+        </div>
+
         <a href="/users/register">Register User</a>
     </body>
 </html>
