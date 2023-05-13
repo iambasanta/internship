@@ -28,7 +28,7 @@ router.post("/register", upload.single("avatar"), (req, res) => {
   const firstName = req.body.firstname;
   const lastName = req.body.lastname;
   const userName = req.body.username;
-  const avatar = req.file.path;
+  const avatar = req.file.filename;
 
   users.push({ firstName, lastName, userName, avatar });
   res.redirect("/users");

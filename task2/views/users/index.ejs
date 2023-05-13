@@ -4,18 +4,23 @@
         <title>Users</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="/css/style.css" rel="stylesheet">
     </head>
     <body>
-        <h3>Registered Users</h3>  
-        <div>
-        <% users.forEach(user => { %>
-            <span>First Name: <%= user.firstName %></span><br>
-            <span>Last Name: <%= user.lastName %></span><br>
-            <span>User Name: <%= user.userName %></span><br>
-            <span>File Path: <%= user.avatar %></span><br>
-        <% }) %>
-        </div>
+        <section class="users">
+            <h3>Registered Users</h3>  
+            <div class="">
+                <% users.forEach(user => { %>
+                <div class="user">
+                    <img src="avatars/<%= user.avatar %>" alt="avatar">
+                    <h3><%= user.firstName +" "+ user.lastName %></h3>
+                    <span>@<%= user.userName %></span>
+                </div>
+                <% }) %>
+            </div>
 
-        <a href="/users/register">Register User</a>
+            <a class="button" href="/users/register">Register User</a>
+        </section>
     </body>
 </html>
