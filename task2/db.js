@@ -14,6 +14,7 @@ const createTableQuery = `
     firstname VARCHAR(100),
     lastname VARCHAR(100),
     username VARCHAR(100),
+    password VARCHAR(200),
     avatar VARCHAR(200)
   );
 `;
