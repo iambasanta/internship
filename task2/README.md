@@ -5,6 +5,10 @@
 
 **(NOTICE: User of css for styling the pages will be a plus point for your evaluation. Feel free to design in any way you like.)**
 
+### TASK-3
+
+1. Store registered users to database
+
 #### **Project Setup**
 
 Fork the repository and clone it (or download the zip file and extract it)
