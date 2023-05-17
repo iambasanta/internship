@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const db = require("../db");
 
 const multer = require("multer");
 
-const users = [];
-
-router.get("/", (req, res) => {
-  res.render("users/index", { users: users });
+router.get("/", async (req, res) => {
+  const users = await db.query(`SELECT * FROM users;`);
+  res.render("users/index", { users: users.rows });
 });
 
 router.get("/register", (req, res) => {
@@ -24,13 +24,15 @@ const multerStorage = multer.diskStorage({
 
 const upload = multer({ storage: multerStorage });
 
-router.post("/register", upload.single("avatar"), (req, res) => {
+router.post("/register", upload.single("avatar"), async (req, res) => {
   const firstName = req.body.firstname;
   const lastName = req.body.lastname;
   const userName = req.body.username;
   const avatar = req.file.filename;
 
-  users.push({ firstName, lastName, userName, avatar });
+  const insertQuery = ` INSERT INTO users (firstname, lastname, username, avatar) VALUES('${firstName}', '${lastName}', '${userName}', '${avatar}'); `;
+  const newUser = await db.query(insertQuery);
+  console.log(newUser);
   res.redirect("/users");
 });
 
