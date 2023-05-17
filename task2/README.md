@@ -9,6 +9,15 @@
 
 1. Store registered users to database
 
+### TASK-4
+
+Continue to task-3 and add the following features:
+
+1. Add username and password fields in user registration
+2. Add login route and assign a JWT token upon successful authentication
+3. Add a dynamic login page in ejs and implement the login route
+4. Add authorization middleware in previously made APIs
+
 #### **Project Setup**
 
 Fork the repository and clone it (or download the zip file and extract it)
