@@ -2,11 +2,23 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const multer = require("multer");
 
-const JWT_TOKEN =
-  "77ae6f2f4dd616eb9a2f43178a7e44c186da1d5e3be763d19425353ac0565d2a3827590080166279df92a6ef754cee4e0438996beb131973f0d2103d6b34d630";
+// const JWT_TOKEN =
+//   "77ae6f2f4dd616eb9a2f43178a7e44c186da1d5e3be763d19425353ac0565d2a3827590080166279df92a6ef754cee4e0438996beb131973f0d2103d6b34d630";
+
+const authorizeUser = (req, res, next) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    res.json(token);
+    jwt.verify(token, JWT_TOKEN);
+    next();
+  } catch (error) {
+    return res.status(401).send("Unauthorized user!");
+  }
+};
 
 router.get("/", async (req, res) => {
   const users = await db.query(`SELECT * FROM users;`);
@@ -52,7 +64,7 @@ router.post("/login", async (req, res) => {
   );
 
   if (result.rows[0]) {
-    const accessToken = jwt.sign(username, JWT_TOKEN);
+    const accessToken = jwt.sign(username, process.env.JWT_TOKEN);
     console.log(accessToken);
     res.redirect("/users");
   } else {
