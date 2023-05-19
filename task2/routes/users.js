@@ -6,21 +6,18 @@ require("dotenv").config();
 
 const multer = require("multer");
 
-// const JWT_TOKEN =
-//   "77ae6f2f4dd616eb9a2f43178a7e44c186da1d5e3be763d19425353ac0565d2a3827590080166279df92a6ef754cee4e0438996beb131973f0d2103d6b34d630";
-
 const authorizeUser = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
-    res.json(token);
-    jwt.verify(token, JWT_TOKEN);
+
+    jwt.verify(token, process.env.JWT_TOKEN);
     next();
   } catch (error) {
     return res.status(401).send("Unauthorized user!");
   }
 };
 
-router.get("/", async (req, res) => {
+router.get("/", authorizeUser, async (req, res) => {
   const users = await db.query(`SELECT * FROM users;`);
   res.render("users/index", { users: users.rows });
 });
@@ -52,7 +49,7 @@ router.post("/register", upload.single("avatar"), async (req, res) => {
   const avatar = req.file.filename;
 
   const insertQuery = `INSERT INTO users (firstname, lastname, username, password, avatar) VALUES('${firstName}', '${lastName}', '${userName}', '${password}', '${avatar}'); `;
-  const newUser = await db.query(insertQuery);
+  await db.query(insertQuery);
   res.redirect("/users/login");
 });
 
