@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db");
 const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const multer = require("multer");
@@ -62,7 +63,7 @@ router.post("/login", async (req, res) => {
 
   if (result.rows[0]) {
     const accessToken = jwt.sign(username, process.env.JWT_TOKEN);
-    console.log(accessToken);
+    res.cookie("accessToken", accessToken, { maxAge: 100000 });
     res.redirect("/users");
   } else {
     console.log("Credentials do not match our record!");
