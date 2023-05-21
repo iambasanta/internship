@@ -1,16 +1,17 @@
 "use strict";
 
-const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 
-app.set("view engine", "ejs");
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set("view engine", "ejs");
 
 const userRouter = require("./routes/user");
-app.use("/user", userRouter);
-
 const productRouter = require("./routes/products");
+
+app.use("/user", userRouter);
 app.use("/products", productRouter);
 
 app.listen(3000, () => {
