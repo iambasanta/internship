@@ -2,6 +2,8 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db");
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
 
 router.get("/register", (req, res, next) => {
   res.render("user/register");
@@ -37,6 +39,8 @@ router.post("/login", async (req, res, next) => {
     console.log("Credentials do not match our record!");
   }
 
+  const userToken = jwt.sign(email, process.env.SECRET_KEY);
+  res.cookie("auth_token", userToken);
   res.redirect("/products");
 });
 
