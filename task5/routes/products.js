@@ -16,6 +16,27 @@ async function authenticatedUser(req, res, next) {
   next();
 }
 
+function authorizeUser(role) {
+  return async (req, res, next) => {
+    try {
+      const loggedInUserEmail = jwt.verify(
+        req.cookies.auth_token,
+        process.env.SECRET_KEY
+      );
+      const result = await db.query(
+        `SELECT * FROM users WHERE email = '${loggedInUserEmail}'`
+      );
+      const user = result.rows[0];
+      if (user.role !== role) {
+        return res.status(401).send("Unauthorized access!");
+      }
+      next();
+    } catch (error) {
+      console.log("ERROR", err);
+    }
+  };
+}
+
 router.get("/", authenticatedUser, async (req, res, next) => {
   const products = await db.query(`SELECT * FROM products;`);
   if (!products) {
@@ -24,9 +45,14 @@ router.get("/", authenticatedUser, async (req, res, next) => {
   res.render("products/index", { products: products.rows });
 });
 
-router.get("/create", authenticatedUser, (req, res, next) => {
-  res.render("products/create");
-});
+router.get(
+  "/create",
+  authenticatedUser,
+  authorizeUser("ADMIN"),
+  (req, res, next) => {
+    res.render("products/create");
+  }
+);
 
 router.post("/create", async (req, res, next) => {
   const { name, price, quantity } = req.body;

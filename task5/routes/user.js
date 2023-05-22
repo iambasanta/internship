@@ -10,7 +10,8 @@ router.get("/register", (req, res, next) => {
 });
 
 router.post("/register", async (req, res, next) => {
-  const { email, password, role } = req.body;
+  const { email, password } = req.body;
+  const role = req.body.role.toUpperCase();
 
   const user = await db.query(
     `INSERT INTO users (email, password, role) VALUES('${email}', '${password}', '${role}');`
