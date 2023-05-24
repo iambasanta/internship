@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="h-full bg-white" lang="en">
+    <head>
+        <title>Products | Edit</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    </head>
+    <body class="h-full">
+
+        <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <form action="/products/create" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+                <div class="space-y-12">
+
+                    <div class="border-b border-gray-900/10 pb-12">
+                        <h2 class="text-base font-semibold leading-7 text-gray-900">Product Information</h2>
+                        <p class="mt-1 text-sm leading-6 text-gray-600">Please keep in mind that the details you provide about the product will be visible to the public.</p>
+
+                        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+
+                            <div class="sm:col-span-2 sm:col-start-1">
+                                <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
+                                <div class="mt-2">
+                                    <input type="text" name="name" id="name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="<%= product.name %>">
+                                </div>
+                            </div>
+
+                            <div class="sm:col-span-2">
+                                <label for="price" class="block text-sm font-medium leading-6 text-gray-900">Price</label>
+                                <div class="mt-2">
+                                    <input type="number" name="price" id="price" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="<%= product.price %>">
+                                </div>
+                            </div>
+
+                            <div class="sm:col-span-2">
+                                <label for="quantity" class="block text-sm font-medium leading-6 text-gray-900">Quantity</label>
+                                <div class="mt-2">
+                                    <input type="number" name="quantity" id="quantity" autocomplete="quantity" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="<%= product.quantity %>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex items-center justify-end gap-x-6">
+                        <a href="/products" class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
+                        <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+                    </div>
+            </form>
+        </div>
+    </body>
+</html>
