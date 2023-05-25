@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  padding-bottom: 3rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+.form {
+  height: 4rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0.25rem;
+  background: #e2e8f0;
+  position: fixed;
+  display: flex;
+  backdrop-filter: blur(15px);
+}
+
+.message {
+  border: none;
+  padding: 0 2rem;
+  flex-grow: 1;
+  border-radius: 0.25rem;
+  margin: 0.25rem;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.form > button {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: #2563eb;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 0 4rem;
+  margin: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.form > button:hover {
+  background: #3b82f6;
+}
+
+.messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.messages > li {
+  padding: 1rem;
+}
+
+.messages > li:nth-child(odd) {
+  color: #ffffff;
+  background: #3b82f6;
+  overflow-wrap: break-word;
+}
