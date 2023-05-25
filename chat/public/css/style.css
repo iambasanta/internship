@@ -19,14 +19,14 @@ body {
 
 .message {
   border: none;
-  padding: 0 2rem;
+  padding: 0 1rem;
   flex-grow: 1;
   border-radius: 0.25rem;
   margin: 0.25rem;
 }
 
-.input:focus {
-  outline: none;
+.message:focus {
+  outline: 2px solid #3b82f6;
 }
 
 .form > button {
@@ -47,17 +47,26 @@ body {
 }
 
 .messages {
-  list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.messages > li {
+.content {
+  border: none;
   padding: 1rem;
+  border-radius: 0.25rem;
+  margin: 0.25rem;
+  max-width: 50%;
 }
 
-.messages > li:nth-child(odd) {
+.incoming {
+  padding: 1rem;
+  background: #e2e8f0;
+}
+
+.outgoing {
+  padding: 1rem;
   color: #ffffff;
-  background: #3b82f6;
-  overflow-wrap: break-word;
+  background: #2563eb;
+  margin-left: auto;
 }

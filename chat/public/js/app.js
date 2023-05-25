@@ -8,18 +8,24 @@ const messages = document.getElementById("messages");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (message.value) {
+    sendMessage(message.value);
     socket.emit("message", message.value);
     message.value = "";
   }
 });
 
+function sendMessage(message) {
+  appendMessage(message, "outgoing");
+}
+
 socket.on("message", (message) => {
-  appendMessage(message);
+  appendMessage(message, "incoming");
 });
 
-function appendMessage(message) {
-  let messageContent = document.createElement("li");
+function appendMessage(message, type) {
+  let messageContent = document.createElement("div");
+  messageContent.classList.add(type, "content");
   messageContent.innerText = message;
-  messages.append(messageContent);
+  messages.appendChild(messageContent);
   window.scrollTo(0, document.body.scrollHeight);
 }
