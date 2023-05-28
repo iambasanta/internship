@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    container_name: quips
+    depends_on:
+      - postgres
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/usr/src/app/
+      - /usr/src/app/node_modules
+
+  postgres:
+    image: postgres:14.1-alpine
+    container_name: quips_db
+    restart: "no"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=root
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres.sql:/docker-entrypoint-initdb.d/postgres.sql
+
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    container_name: quips_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "root@pgadmin.com"
+      PGADMIN_DEFAULT_PASSWORD: "root"
+    ports:
+      - "3030:80"
+    depends_on:
+      - postgres
