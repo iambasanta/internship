@@ -27,8 +27,8 @@ const UserSchema = db.sequelize.define("user", {
 
 (async () => {
   try {
-    await UserSchema.sync({ force: true });
-    console.log("Table created successfully!");
+    await UserSchema.sync();
+    console.log("User table created successfully!");
   } catch (error) {
     console.error("Failed to create table:", error);
   }

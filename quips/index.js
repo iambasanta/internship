@@ -12,8 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 connect();
 const userRouter = require("./routes/user");
+const quipRouter = require("./routes/quip");
 
 app.use("/user", userRouter);
+app.use("/", quipRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
