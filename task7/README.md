@@ -66,3 +66,26 @@ Authenticate a user and generate an access token
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0fSwiaWF0IjoxNjg1NTQ4NzkyLCJleHAiOjE2ODU1NTIzOTJ9.22lZeESHsV8QhkKyi1ZmPy-W05OQxgPfIM9HEECjm2Q"
 }
 ```
+
+#### Profile
+
+Retrieve user profile
+
+- Endpoint: `/api/user/profile`
+- Method: `GET`
+- Headers: `Authorization: Bearer <access_token>`
+
+- Response:
+
+```json
+{
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "johndoe@email.com",
+    "avatar": "avatar.png",
+    "role": "user",
+    "address": "address"
+  }
+}
+```
