@@ -26,5 +26,7 @@ Here's a list of the tasks included in this repository:
 - [x] [task-3](https://github.com/iambasanta/internship/tree/master/task2)
 - [x] [task-4](https://github.com/iambasanta/internship/tree/master/task2)
 - [x] [task-5](https://github.com/iambasanta/internship/tree/master/task5)
+- [x] [task-6](https://github.com/iambasanta/internship/tree/master/chat)
+- [ ] [task-7](https://github.com/iambasanta/internship/tree/master/task7)
 
 Each task folder contains the necessary files, code, and documentation related to the specific task. Within each task folder, you can find detailed information about the task, including the problem statement, approach, and implementation details.
