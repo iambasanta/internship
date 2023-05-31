@@ -12,3 +12,57 @@ Develop a server side application for an ecommerce platform including following 
 4. Create an API for searching products which must accept request parameters and perform proper filtering and sorting
    - Sorting based on published date, price, etc
    - Search from keywords
+
+### API Documentation
+
+#### Register
+
+Register a new user in the system
+
+- Endpoint: `/api/auth/register`
+- Method: `POST`
+- Request Body:
+
+```json
+{
+  "name": "John Doe",
+  "email": "johndoe@email.com",
+  "password": "password",
+  "avatar": "avatar.png",
+  "role": "user",
+  "address": "address"
+}
+```
+
+- Response:
+
+```json
+{
+  "message": "User registered successfully",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNjg1NTQ3MTg1LCJleHAiOjE2ODU1NTA3ODV9.hhsracHZxCmRCtBxbdT0n2YQp1-NTCEN0_93bdoKYkk"
+}
+```
+
+#### Login
+
+Authenticate a user and generate an access token
+
+- Endpoint: `/api/auth/register`
+- Method: `POST`
+- Request Body:
+
+```json
+{
+  "email": "johndoe@email.com",
+  "password": "password"
+}
+```
+
+- Response:
+
+```json
+{
+  "message": "User logged in successfully",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNjg1NTQ3MTg1LCJleHAiOjE2ODU1NTA3ODV9.hhsracHZxCmRCtBxbdT0n2YQp1-NTCEN0_93bdoKYkk"
+}
+```
