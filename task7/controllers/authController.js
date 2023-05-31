@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
 const User = require("../models/User");
+const bcrypt = require("bcryptjs");
+require("dotenv").config();
 
 function generateToken(userId) {
   const payload = {
@@ -20,7 +21,19 @@ async function register(req, res) {
     if (user) {
       return res.status(400).json({ error: "Email has already been taken" });
     }
-    user = User.create({ name, email, password, avatar, role, address });
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    user = User.create({
+      name,
+      email,
+      password: hashedPassword,
+      avatar,
+      role,
+      address,
+    });
+
     const token = generateToken(user.id);
     res.json({ message: "User registered successfully", token: token });
   } catch (error) {
@@ -39,7 +52,8 @@ async function login(req, res) {
         .status(400)
         .json({ error: "Credentials do not match our record" });
     }
-    const passwordMatch = password === user.password;
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
       return res
         .status(400)
