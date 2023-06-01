@@ -265,6 +265,50 @@ Search products by name
 }
 ```
 
+#### Sort products
+
+Search products by price
+
+- Endpoint: `/api/products/sort`
+- Method: `GET`
+- Example:
+
+  - `/api/products/sort?sortBy=createdAt`
+  - `/api/products/sort?sortBy=price&sortOrder=desc`
+
+- Response:
+
+```json
+{
+  "products": [
+    {
+      "id": 5,
+      "name": "bennie",
+      "price": "100.00",
+      "description": "press stud texured polo tshirt",
+      "createdAt": "2023-06-01T11:54:49.362Z",
+      "updatedAt": "2023-06-01T11:54:49.362Z"
+    },
+    {
+      "id": 2,
+      "name": "Basic Tee",
+      "price": "69.69",
+      "description": "A good tshirt",
+      "createdAt": "2023-06-01T04:28:04.965Z",
+      "updatedAt": "2023-06-01T04:28:04.965Z"
+    },
+    {
+      "id": 4,
+      "name": "Cool Tee",
+      "price": "10.00",
+      "description": "A really cool tshirt is here",
+      "createdAt": "2023-06-01T06:07:38.869Z",
+      "updatedAt": "2023-06-01T11:52:37.706Z"
+    }
+  ]
+}
+```
+
 #### Create product
 
 Create a new product

@@ -78,13 +78,33 @@ async function searchProducts(req, res, next) {
   const { query } = req.query;
 
   try {
-    console.log(query);
     const products = await Product.findAll({
       where: {
         name: {
           [Op.iLike]: `%${query}%`,
         },
       },
+    });
+
+    res.json({ products });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+}
+
+async function sortProducts(req, res, next) {
+  const { sortBy, sortOrder } = req.query;
+
+  try {
+    let sortOrderQuery = "ASC";
+
+    if (sortOrder) {
+      sortOrderQuery = sortOrder;
+    }
+
+    const products = await Product.findAll({
+      order: [[sortBy, sortOrderQuery]],
     });
 
     res.json({ products });
@@ -101,4 +121,5 @@ module.exports = {
   updateProduct,
   deleteProduct,
   searchProducts,
+  sortProducts,
 };
