@@ -4,13 +4,13 @@ const categoryController = require("../controllers/categoryController");
 const authMiddleware = require("../middlewares/auth");
 const checkRole = require("../middlewares/role");
 
-router.get("/categories", categoryController.getAllCategories);
+router.get("/", categoryController.getAllCategories);
 
 router.use(authMiddleware, checkRole(["admin", "seller"]));
 
-router.post("/categories", categoryController.createCategory);
-router.get("/categories/:id", categoryController.getCategoryById);
-router.patch("/categories/:id", categoryController.updateCategory);
-router.delete("/categories/:id", categoryController.deleteCategory);
+router.post("/", categoryController.createCategory);
+router.get("/:id", categoryController.getCategoryById);
+router.patch("/:id", categoryController.updateCategory);
+router.delete("/:id", categoryController.deleteCategory);
 
 module.exports = router;

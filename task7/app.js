@@ -16,8 +16,8 @@ const productRoutes = require("./routes/products");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
-app.use("/api", categoryRoutes);
-app.use("/api", productRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/products", productRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
