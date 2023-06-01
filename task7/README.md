@@ -209,3 +209,133 @@ Delete category
   "message": "Category deleted successfully"
 }
 ```
+
+### Products
+
+#### Get all products
+
+Retrieve a list of all products
+
+- Endpoint: `/api/products`
+- Method: `GET`
+
+- Response:
+
+```json
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Basic Tee",
+      "price": "69.00",
+      "description": "A good tshirt",
+      "createdAt": "2023-06-01T04:09:31.180Z",
+      "updatedAt": "2023-06-01T04:09:31.180Z"
+    }
+  ]
+}
+```
+
+#### Create product
+
+Create a new product
+
+- Endpoint: `/api/products`
+- Method: `POST`
+- Body:
+
+```json
+{
+  "name": "Basic Tee",
+  "price": 69,
+  "description": "A good tshirt"
+}
+```
+
+- Response:
+
+```json
+{
+  "message": "Product created successfully!",
+  "product": {
+    "id": 1,
+    "name": "Basic Tee",
+    "price": "69.00",
+    "description": "A good tshirt",
+    "updatedAt": "2023-06-01T04:09:31.180Z",
+    "createdAt": "2023-06-01T04:09:31.180Z"
+  }
+}
+```
+
+#### Get product
+
+Get product by id
+
+- Endpoint: `/api/products/:id`
+- Method: `GET`
+- Example:`/api/products/1`
+
+- Response:
+
+```json
+{
+  "product": {
+    "id": 1,
+    "name": "Basic Tee",
+    "price": "69.69",
+    "description": "A good tshirt",
+    "createdAt": "2023-06-01T04:09:31.180Z",
+    "updatedAt": "2023-06-01T04:09:31.180Z"
+  }
+}
+```
+
+#### Update product
+
+Update product details
+
+- Endpoint: `/api/products/:id`
+- Method: `PATCH`
+- Example:`/api/products/1`
+- Body:
+
+```json
+{
+  "name": "Cool Tee",
+  "price": 69.69,
+  "description": "A really cool tshirt"
+}
+```
+
+- Response:
+
+```json
+{
+  "message": "Product updated successfully!",
+  "product": {
+    "id": 1,
+    "name": "Cool Tee",
+    "price": 69.69,
+    "description": "A really cool tshirt",
+    "createdAt": "2023-06-01T04:09:31.180Z",
+    "updatedAt": "2023-06-01T04:23:22.299Z"
+  }
+}
+```
+
+#### Delete product
+
+Delete product
+
+- Endpoint: `/api/products/:id`
+- Method: `DELETE`
+- Example:`/api/products/1`
+
+- Response:
+
+```json
+{
+  "message": "Product deleted successfully!"
+}
+```
