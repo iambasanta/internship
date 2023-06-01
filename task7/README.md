@@ -240,6 +240,31 @@ Retrieve a list of all products
 }
 ```
 
+#### Search products
+
+Search products by name
+
+- Endpoint: `/api/products/search`
+- Method: `GET`
+- Example: `/api/products/search?query=cool`
+
+- Response:
+
+```json
+{
+  "products": [
+    {
+      "id": 4,
+      "name": "Cool Tee",
+      "price": "69.69",
+      "description": "A really cool tshirt is here",
+      "createdAt": "2023-06-01T06:07:38.869Z",
+      "updatedAt": "2023-06-01T10:21:21.393Z"
+    }
+  ]
+}
+```
+
 #### Create product
 
 Create a new product

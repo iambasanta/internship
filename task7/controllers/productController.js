@@ -1,4 +1,5 @@
 const Product = require("../models/Product");
+const { Op } = require("sequelize");
 
 async function getAllProducts(req, res, next) {
   try {
@@ -73,10 +74,31 @@ async function deleteProduct(req, res, next) {
   }
 }
 
+async function searchProducts(req, res, next) {
+  const { query } = req.query;
+
+  try {
+    console.log(query);
+    const products = await Product.findAll({
+      where: {
+        name: {
+          [Op.iLike]: `%${query}%`,
+        },
+      },
+    });
+
+    res.json({ products });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+}
+
 module.exports = {
   getAllProducts,
   createProduct,
   getProductById,
   updateProduct,
   deleteProduct,
+  searchProducts,
 };

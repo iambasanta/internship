@@ -5,6 +5,7 @@ const authMiddleware = require("../middlewares/auth");
 const checkRole = require("../middlewares/role");
 
 router.get("/products", productController.getAllProducts);
+router.get("/products/search", productController.searchProducts);
 
 router.use(authMiddleware, checkRole(["admin", "seller"]));
 
