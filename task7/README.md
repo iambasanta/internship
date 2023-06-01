@@ -128,6 +128,7 @@ Create a new category
 
 - Endpoint: `/api/categories`
 - Method: `POST`
+- Headers: `Authorization: Bearer <access_token>`
 - Body:
 
 ```json
@@ -150,6 +151,7 @@ Get category by id
 
 - Endpoint: `/api/categories/:id`
 - Method: `GET`
+- Headers: `Authorization: Bearer <access_token>`
 - Example:`/api/categories/4`
 
 - Response:
@@ -171,6 +173,7 @@ Update category details
 
 - Endpoint: `/api/categories/:id`
 - Method: `PATCH`
+- Headers: `Authorization: Bearer <access_token>`
 - Example:`/api/categories/4`
 - Body:
 
@@ -200,6 +203,7 @@ Delete category
 
 - Endpoint: `/api/categories/:id`
 - Method: `DELETE`
+- Headers: `Authorization: Bearer <access_token>`
 - Example:`/api/categories/4`
 
 - Response:
@@ -242,6 +246,7 @@ Create a new product
 
 - Endpoint: `/api/products`
 - Method: `POST`
+- Headers: `Authorization: Bearer <access_token>`
 - Body:
 
 ```json
@@ -274,6 +279,7 @@ Get product by id
 
 - Endpoint: `/api/products/:id`
 - Method: `GET`
+- Headers: `Authorization: Bearer <access_token>`
 - Example:`/api/products/1`
 
 - Response:
@@ -297,6 +303,7 @@ Update product details
 
 - Endpoint: `/api/products/:id`
 - Method: `PATCH`
+- Headers: `Authorization: Bearer <access_token>`
 - Example:`/api/products/1`
 - Body:
 
@@ -330,6 +337,7 @@ Delete product
 
 - Endpoint: `/api/products/:id`
 - Method: `DELETE`
+- Headers: `Authorization: Bearer <access_token>`
 - Example:`/api/products/1`
 
 - Response:
