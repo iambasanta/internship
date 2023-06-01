@@ -13,7 +13,9 @@ Develop a server side application for an ecommerce platform including following 
    - Sorting based on published date, price, etc
    - Search from keywords
 
-### API Documentation
+## API Documentation
+
+### User Authentication
 
 #### Register
 
@@ -87,5 +89,123 @@ Retrieve user profile
     "role": "user",
     "address": "address"
   }
+}
+```
+
+### Categories
+
+#### Get all categories
+
+Retrieve a list of all categories
+
+- Endpoint: `/api/categories`
+- Method: `GET`
+
+- Response:
+
+```json
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Shoes",
+      "createdAt": "2023-06-01T02:53:24.290Z",
+      "updatedAt": "2023-06-01T03:16:38.251Z"
+    },
+    {
+      "id": 2,
+      "name": "Clothing",
+      "createdAt": "2023-06-01T03:25:47.164Z",
+      "updatedAt": "2023-06-01T03:25:47.164Z"
+    }
+  ]
+}
+```
+
+#### Create category
+
+Create a new category
+
+- Endpoint: `/api/categories`
+- Method: `POST`
+- Body:
+
+```json
+{
+  "name": "Accessories"
+}
+```
+
+- Response:
+
+```json
+{
+  "message": "Category created successfully!"
+}
+```
+
+#### Get category
+
+Get category by id
+
+- Endpoint: `/api/categories/:id`
+- Method: `GET`
+- Example:`/api/categories/4`
+
+- Response:
+
+```json
+{
+  "category": {
+    "id": 4,
+    "name": "Accessories",
+    "createdAt": "2023-06-01T03:43:54.047Z",
+    "updatedAt": "2023-06-01T03:43:54.047Z"
+  }
+}
+```
+
+#### Update category
+
+Update category details
+
+- Endpoint: `/api/categories/:id`
+- Method: `PATCH`
+- Example:`/api/categories/4`
+- Body:
+
+```json
+{
+  "name": "New Category"
+}
+```
+
+- Response:
+
+```json
+{
+  "message": "Category updated successfully!",
+  "category": {
+    "id": 4,
+    "name": "New Category",
+    "createdAt": "2023-06-01T03:43:54.047Z",
+    "updatedAt": "2023-06-01T03:49:57.680Z"
+  }
+}
+```
+
+#### Delete category
+
+Delete category
+
+- Endpoint: `/api/categories/:id`
+- Method: `DELETE`
+- Example:`/api/categories/4`
+
+- Response:
+
+```json
+{
+  "message": "Category deleted successfully"
 }
 ```
