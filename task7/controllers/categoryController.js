@@ -1,8 +1,9 @@
 const Category = require("../models/Category");
+const Product = require("../models/Product");
 
 async function getAllCategories(req, res, next) {
   try {
-    const categories = await Category.findAll();
+    const categories = await Category.findAll({ include: Product });
     res.json({ categories });
   } catch (error) {
     console.error(error);

@@ -1,13 +1,21 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../db");
 
-const Category = sequelize.define("category", {
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
+class Category extends Model {}
+
+Category.init(
+  {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
   },
-});
+  {
+    sequelize: sequelize,
+    modelName: "category",
+  }
+);
 
 (async () => {
   try {

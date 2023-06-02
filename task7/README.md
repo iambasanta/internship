@@ -107,16 +107,21 @@ Retrieve a list of all categories
 {
   "categories": [
     {
-      "id": 1,
-      "name": "Shoes",
-      "createdAt": "2023-06-01T02:53:24.290Z",
-      "updatedAt": "2023-06-01T03:16:38.251Z"
-    },
-    {
-      "id": 2,
-      "name": "Clothing",
-      "createdAt": "2023-06-01T03:25:47.164Z",
-      "updatedAt": "2023-06-01T03:25:47.164Z"
+      "id": 5,
+      "name": "Accessories",
+      "createdAt": "2023-06-01T12:10:52.617Z",
+      "updatedAt": "2023-06-01T12:10:52.617Z",
+      "products": [
+        {
+          "id": 1,
+          "name": "G-shock",
+          "price": "69.00",
+          "description": "wathch is important",
+          "categoryId": 5,
+          "createdAt": "2023-06-02T10:04:12.719Z",
+          "updatedAt": "2023-06-02T10:04:12.719Z"
+        }
+      ]
     }
   ]
 }
@@ -230,11 +235,18 @@ Retrieve a list of all products
   "products": [
     {
       "id": 1,
-      "name": "Basic Tee",
+      "name": "G-shock",
       "price": "69.00",
-      "description": "A good tshirt",
-      "createdAt": "2023-06-01T04:09:31.180Z",
-      "updatedAt": "2023-06-01T04:09:31.180Z"
+      "description": "wathch is important",
+      "categoryId": 5,
+      "createdAt": "2023-06-02T10:04:12.719Z",
+      "updatedAt": "2023-06-02T10:04:12.719Z",
+      "category": {
+        "id": 5,
+        "name": "Accessories",
+        "createdAt": "2023-06-01T12:10:52.617Z",
+        "updatedAt": "2023-06-01T12:10:52.617Z"
+      }
     }
   ]
 }
@@ -320,9 +332,10 @@ Create a new product
 
 ```json
 {
-  "name": "Basic Tee",
+  "name": "G-shock",
   "price": 69,
-  "description": "A good tshirt"
+  "description": "wathch is important",
+  "categoryId": 5
 }
 ```
 
@@ -333,11 +346,12 @@ Create a new product
   "message": "Product created successfully!",
   "product": {
     "id": 1,
-    "name": "Basic Tee",
+    "name": "G-shock",
     "price": "69.00",
-    "description": "A good tshirt",
-    "updatedAt": "2023-06-01T04:09:31.180Z",
-    "createdAt": "2023-06-01T04:09:31.180Z"
+    "description": "wathch is important",
+    "categoryId": 5,
+    "updatedAt": "2023-06-02T10:04:12.719Z",
+    "createdAt": "2023-06-02T10:04:12.719Z"
   }
 }
 ```

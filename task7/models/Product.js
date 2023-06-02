@@ -1,20 +1,40 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../db");
+const Category = require("./Category");
 
-const Product = sequelize.define("product", {
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
+class Product extends Model {}
+
+Product.init(
+  {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    price: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    categoryId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: Category,
+        key: "id",
+      },
+    },
   },
-  price: {
-    type: DataTypes.DECIMAL(10, 2),
-    allowNull: false,
-  },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: true,
-  },
-});
+  {
+    sequelize: sequelize,
+    modelName: "product",
+  }
+);
+
+Product.belongsTo(Category, { foreignKey: "categoryId" });
+Category.hasMany(Product);
 
 (async () => {
   try {

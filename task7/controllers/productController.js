@@ -1,9 +1,10 @@
 const Product = require("../models/Product");
 const { Op } = require("sequelize");
+const Category = require("../models/Category");
 
 async function getAllProducts(req, res, next) {
   try {
-    const products = await Product.findAll();
+    const products = await Product.findAll({ include: Category });
     res.json({ products });
   } catch (error) {
     console.error(error);
@@ -12,10 +13,15 @@ async function getAllProducts(req, res, next) {
 }
 
 async function createProduct(req, res, next) {
-  const { name, price, description } = req.body;
+  const { name, price, description, categoryId } = req.body;
 
   try {
-    const product = await Product.create({ name, price, description });
+    const product = await Product.create({
+      name,
+      price,
+      description,
+      categoryId,
+    });
 
     res.status(201).json({ message: "Product created successfully!", product });
   } catch (error) {
@@ -43,7 +49,7 @@ async function getProductById(req, res, next) {
 
 async function updateProduct(req, res, next) {
   const { id } = req.params;
-  const { name, price, description } = req.body;
+  const { name, price, description, categoryId } = req.body;
 
   try {
     const product = await Product.findByPk(id);
@@ -52,7 +58,7 @@ async function updateProduct(req, res, next) {
       return res.status(404).json({ error: "Product not found" });
     }
 
-    await product.update({ name, price, description });
+    await product.update({ name, price, description, categoryId });
     res.json({ message: "Product updated successfully!", product });
   } catch (error) {
     console.error(error);
