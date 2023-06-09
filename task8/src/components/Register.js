@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Register({ addUser, users }) {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -15,6 +18,7 @@ function Register({ addUser, users }) {
 
   return (
     <>
+      <button onClick={() => navigate("/users")}>View users</button>
       <div>Register page</div>
       <form onSubmit={handleSubmit}>
         <label>

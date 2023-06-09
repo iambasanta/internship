@@ -24,11 +24,11 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/users" element={<Users users={users} />} />
         <Route
           path="/register"
           element={<Register addUser={addUser} users={users} />}
         />
+        <Route path="/users" element={<Users users={users} />} />
       </Routes>
     </>
   );
