@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Register({ addUser }) {
+function Register({ addUser, users }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -36,6 +36,17 @@ function Register({ addUser }) {
         </label>
         <button type="submit">Register</button>
       </form>
+
+      <div>
+        <h1>Users</h1>
+        <ul>
+          {users.map((user, index) => (
+            <li key={index}>
+              {user.name} ({user.email})
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

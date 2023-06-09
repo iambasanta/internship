@@ -7,13 +7,12 @@ import Users from "./components/Users";
 function App() {
   const [users, setUsers] = useState([
     {
-      name: 'John Doe',
-      email: 'john@email.com'
-    }
+      name: "John Doe",
+      email: "john@email.com",
+    },
   ]);
 
   const addUser = (user) => {
-    console.log("adding user");
     const newUser = {
       id: Math.floor(Math.random()),
       name: user.name,
@@ -22,13 +21,14 @@ function App() {
     setUsers([...users, newUser]);
   };
 
-  console.log(users);
-
   return (
     <>
       <Routes>
         <Route exact path="/users" element={<Users users={users} />} />
-        <Route path="/register" element={<Register addUser={addUser} />} />
+        <Route
+          path="/register"
+          element={<Register addUser={addUser} users={users} />}
+        />
       </Routes>
     </>
   );
