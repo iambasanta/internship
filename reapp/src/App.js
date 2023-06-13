@@ -1,25 +1,33 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+
+const baseUrl = "http://localhost:8000";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Yay! my first react app is up.</h1>
-        <Button />
-      </header>
-    </div>
-  );
-}
+  const [products, setProducts] = useState("");
 
-function Button() {
-  function wishme() {
-    alert("Congratulations!!!");
+  useEffect(() => {
+    axios.get(baseUrl).then((response) => {
+      setProducts(response.data);
+    });
+  }, []);
+
+  if (!products) {
+    return <div>No data to fetch!</div>;
   }
+
   return (
-    <button onClick={wishme} className="button">
-      Wish me
-    </button>
+    <div className="">
+      <ul>
+        {products.map((product, index) => (
+          <li key={index}>
+            (id:{product.id}){product.name} [price: {product.price}]
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
