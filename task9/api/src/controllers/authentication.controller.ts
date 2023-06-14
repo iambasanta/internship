@@ -1,6 +1,18 @@
 import express, { Request, Response } from "express";
 import User from "../models/user";
 import bcrypt from "bcrypt";
+import jwt, { Secret } from "jsonwebtoken";
+import "dotenv/config";
+
+function generateToken(userId: number) {
+  const payload = {
+    id: userId,
+  };
+
+  return jwt.sign(payload, process.env.SECRET_KEY as Secret, {
+    expiresIn: "1hr",
+  });
+}
 
 export const register = async (req: Request, res: Response) => {
   try {
@@ -24,7 +36,8 @@ export const register = async (req: Request, res: Response) => {
       password: hashedPassword,
     });
 
-    return res.sendStatus(201);
+    const token = generateToken(user.id);
+    return res.status(201).json({ auth_token: token });
   } catch (error) {
     console.error(error);
     return res.sendStatus(500);
@@ -51,7 +64,8 @@ export const login = async (req: Request, res: Response) => {
       return res.sendStatus(400);
     }
 
-    return res.sendStatus(200);
+    const token = generateToken(user.id);
+    return res.status(200).json({ auth_token: token });
   } catch (error) {
     console.error(error);
     return res.sendStatus(500);
