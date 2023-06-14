@@ -1,5 +1,12 @@
 version: "3.8"
 services:
+  db:
+    image: postgres:12
+    container_name: auth_db
+    environment:
+      - POSTGRES_DB=auth
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
   app:
     build:
       context: .
@@ -9,3 +16,10 @@ services:
       - ./src:/app/src
     ports:
       - 8000:8000
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_DB=auth
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_HOST=db
