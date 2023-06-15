@@ -1,12 +1,12 @@
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
 .form {
-  margin: auto;
   padding: 20px;
   text-align: center;
 }
@@ -19,4 +19,25 @@
 .form button {
   margin: 10px;
   padding: 5px;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+.profile {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile h3 {
+  padding: 8px;
+  text-align: center;
+  border-bottom-style: solid;
+}
+
+.profile p {
+  margin: 8px;
+  color: gray;
 }
