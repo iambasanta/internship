@@ -8,6 +8,8 @@ import UserDetail from "./components/users/UserDetail";
 import UserList from "./components/users/UserList";
 import StateCounter from "./features/counter/Counter";
 import Coin from "./features/coin/Coin";
+import Edit from "./components/movies/Edit";
+import Add from "./components/movies/Add";
 
 function App() {
   return (
@@ -34,7 +36,11 @@ function App() {
 
         {/* <Route path="counter" element={<Counter />}></Route> */}
 
-        <Route path="movies" element={<Movies />}></Route>
+        <Route path="movies">
+          <Route index={true} element={<Movies />} />
+          <Route path="add" element={<Add />} />
+          <Route path="edit/:movieId" element={<Edit />} />
+        </Route>
 
         <Route path="state-counter" element={<StateCounter />}></Route>
 
