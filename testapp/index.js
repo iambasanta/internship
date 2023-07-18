@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 app.use("/register", (req, res) => {
   console.log("START");
   console.log("INPUT VALUES", req.body.inputValues);
+  console.log("HEADERS", req.headers);
   console.log("END");
 });
 
