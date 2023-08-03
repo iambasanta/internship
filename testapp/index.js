@@ -17,6 +17,7 @@ app.post("/register", (req, res) => {
     console.log("INPUT VALUES", req.body.inputValues);
     console.log("HEADERS", req.headers);
     console.log("END");
+    res.sendStatus(200);
 });
 
 app.post("/excitement-poll", (req,res) => {
